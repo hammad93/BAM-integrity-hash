@@ -13,14 +13,17 @@ def sha3_large_file(filepath, chunk_size=1024):
     return hash_sha3.hexdigest()
 
 def main():
-    parser = argparse.ArgumentParser(description="Calculate SHA3 512 bits hash of a file.")
+    parser = argparse.ArgumentParser(description="Calculate SHA-3 512 bits hash of a file.")
     parser.add_argument("filepath", help="The file path of the file to hash.")
     args = parser.parse_args()
 
     # Compute and print the hash
     try:
         sha3_hash = sha3_large_file(args.filepath)
-        print(f"The SHA3 512 bits hash of the file {args.filepath} is:\n{sha3_hash}")
+        with open(f"{args.filepath}.sh3", "w") as f:
+            f.write(sha3_hash)
+        print(f"The SHA-3 512 bits hash of the file {args.filepath} is:\n{sha3_hash}")
+        print(f"Saved SHA-3 value to {args.filepath}.sh3")
     except FileNotFoundError:
         print("File not found. Please check the path and try again.")
     except IOError as e:

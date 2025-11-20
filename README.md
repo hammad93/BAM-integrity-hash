@@ -1,20 +1,13 @@
 # BAM-integrity-hash
-A short script to create an integrity hash for a full sequence genome file, tested on BAM. Currently, we use the MD5 hash algorithm.
+A cryptographic method to create an integrity hash for a full sequence genome file, tested on BAM. This implementation utilizes the SHA-3 512 bits hash algorithm for enhanced security and reduced collision probabilities.
 
 ## Quickstart
-Navigate to the directory that has the BAM file. Enter in the command with the filename to show your MD5 hash.
+Install the requirements with `pip install requirements.txt`. Navigate to the directory that has the BAM file. Enter in the command with the filename to show your SHA-3 hash.
 
 ```bash
 python bam-hash.py filename.bam
 ```
 
 If you did not specify one on the command line, you can enter it then. It will print out the hash.
-An example of a produced hash is `da4ab4dfc16ac510e84fb466cc659441`
-
-## Windows
-In order to check the validity of this method, both Python in Linux and Powershell in Windows were utilized and returned the same result.
-The corresponding command in Powershell,
-
-```msdos
-(Get-FileHash -Path $filename -Algorithm MD5).Hash.ToLower()
-```
+An example of a produced hash is
+`bbd2111ebb10bdb5bb0ade64f35a2e1522a27dcfd25c0edf12470f54410873674d29fb4848cf43b18292ab434ce94531b7a4d98b83995aec6f9092d7e3c90b51`
